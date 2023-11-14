@@ -1,0 +1,113 @@
+/* @font-face {
+  font-family: "timera-font-syne";
+  src: url("/FrontEnd/assets/Syne-VariableFont_wght.ttf");
+} */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "timera-font-syne", Georgia, "Times New Roman", Times, serif;
+}
+#page-block {
+  height: 100%;
+  width: 70%;
+  margin: auto;
+  background-color: rgba(246, 237, 237, 0.331);
+  margin-top: 25px;
+}
+body {
+}
+#header-block {
+  margin-top: 25px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  font-family: "Syne";
+  font-size: 23px;
+  font-weight: 800;
+  color: #b1663c;
+}
+.sub-title {
+  font-size: 13px;
+  color: #b1663c;
+}
+.header-nav a {
+  padding: 25px;
+  font-size: 1.2em;
+  text-decoration: none;
+  display: inline-block;
+}
+.header-nav {
+  /* white-space: nowrap; */
+}
+.fa-instagram {
+  font-size: 1.7em;
+}
+
+#main-block {
+  width: 100%;
+  margin: auto;
+  height: 100%;
+
+  min-height: 100vh;
+}
+.login {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  vertical-align: text-top;
+  background: fixed;
+  margin-top: 50px;
+}
+.login div {
+  margin-top: 5px;
+}
+
+.login #mail,
+#pswd {
+  width: 570px;
+  height: 51px;
+  box-shadow: 1px 2px 2px 1px #aeadad;
+  border: none;
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+#submit {
+  width: 180px;
+  height: 50px;
+  background: #1d6154;
+  border-radius: 25px;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+.login legend {
+  color: #1d6154;
+  font-size: 22px;
+  font-weight: 700;
+}
+.login input {
+  margin-bottom: 15px;
+}
+.password {
+  padding: 15px 0;
+}
+#footer-block {
+  position: relative;
+  margin-bottom: 25px;
+  background-color: #ffffff;
+  height: 50px;
+}
+.mentions-legales {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}

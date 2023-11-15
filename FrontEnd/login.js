@@ -8,13 +8,14 @@ form.addEventListener("submit", (event) => {
 
   const btnSubmit = document.querySelector(".submit");
   const messageErreur = document.createElement("p");
-  const logErreur = document.createElement("div");
+  const logErreur = document.createElement("p");
   btnSubmit.appendChild(logErreur);
   btnSubmit.appendChild(messageErreur);
   if (email === "" || password === "") {
     messageErreur.innerHTML =
       "Veuillez remplir les champs ci-dessus s'il vous plait merci !";
     messageErreur.style.color = "red";
+    logErreur.style.display = "none";
   }
   // *******************création de mon objet de logins****************//
   const controlLogins = {
@@ -26,25 +27,25 @@ form.addEventListener("submit", (event) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify(controlLogins),
   })
     .then((response) => {
-      if (!response.ok) {
-        console.log("test");
-
-        logErreur.innerHTML = "Veuillez rentrer des logins corrects ";
-        logErreur.style.color = "red";
+      if (response.ok === true) {
+        return response.json();
       }
-
-      return response.json();
     })
     .then((data) => {
       localStorage.setItem("token", data.token);
+      console.log(data);
+    })
+
+    .catch((err) => {
+      logErreur.innerHTML = "Merci de saisir des identfiants corrects";
+      logErreur.style.color = "red";
     });
-});
-document.addEventListener("click", () => {
-  messageErreur.innerHTML = "";
-  logErreur.innerHTML = "";
+  document.addEventListener("click", () => {
+    messageErreur.innerHTML = "";
+    logErreur.innerHTML = "";
+  });
 });

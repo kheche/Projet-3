@@ -94,7 +94,10 @@ function getWorksForModal() {
       for (let i in data) {
         galleryModal.innerHTML += `
         <figure class = "figureModal" >
-				<img src = ${data[i].imageUrl} width = "50"> <i class="fa-solid fa-trash-can"></i>
+				<img src = ${data[i].imageUrl} class = "img-modal"> 
+        <span class = "content-i"> 
+        <i class="fa-solid fa-trash-can"></i>
+        </span>
       	</figure>
         
         `;

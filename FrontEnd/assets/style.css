@@ -307,28 +307,24 @@ footer nav ul {
 }
 
 .block-modal {
-  overflow: auto;
-  max-width: calc(100vh - 20px);
-  max-width: calc(100vh -20px);
   background-color: #ffff;
-  width: 350px;
-  height: 400px;
+  width: 620px;
+  height: 688px;
   margin: auto;
   position: relative;
   margin-top: 25;
-  padding-top: 25px;
+  /* padding-top: 25px; */
+  border-radius: 10px;
 }
 .gallery-modal {
-  height: 80%;
-  width: 90%;
+  height: 60%;
+  width: 80%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  padding: auto;
-}
-
-.gallery-modal figure {
-  gap: 25px;
+  justify-content: space-between;
+  border-bottom: solid gray 2px;
+  padding-bottom: 50px;
 }
 
 .croix-fermeture-modal {
@@ -347,7 +343,7 @@ footer nav ul {
   color: #000;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin: 10px 0;
+  margin: 45px 0;
 }
 
 /* CRATION DE LIEN DE MODIFICATION ET LOGO MODIFIER */
@@ -368,20 +364,44 @@ footer nav ul {
 }
 
 .btn-ajouter-photo {
-  margin-left: 32%;
   text-decoration: none;
   background-color: #1d6154;
   border-radius: 25px;
   color: #ffff;
-  padding: 3px 10px;
+  width: 237px;
+  height: 36px;
   font-size: 1em;
-  margin-top: 20px;
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-hr {
-  margin-top: -30px;
-  margin-bottom: 25px;
-  background-color: rgba(128, 128, 128, 0.516);
-}
+
 .figureModal {
-  margin: 15px;
+  margin: 10px 5px;
+  width: 76.61px;
+  height: 102.57px;
+  position: relative;
+}
+
+.figureModal .content-i {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+  color: white;
+  width: 25px;
+  height: 25px;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-modal {
+  width: 100%;
+  object-fit: cover;
 }

@@ -9,11 +9,28 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
 		rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" >
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 
 <body>
+	<aside id="btn-modifier" class = "overlay" role="dialog" aria-labelledby="heading-modal" aria-hidden="true" style="display: none;" >
+	 <div class="block-modal js-modal-stop">
+		<div class = "croix-fermeture-modal js-close-modal">x</div>
+		<h1 class="modal-title">Galerie photo</h1>
+		<div class=" gallery-modal" >
+
+			<!-- CE "DIV" CONTIENT LES PHOTOS RECUPRÉES DE LA BASES DES DONNÉES -->
+	
+		</div>
+		<div class="footer-block-modal">
+		<hr height="2" width="60%" color="gray" >
+			<a href="#modal2 " class="btn-ajouter-photo"> Ajouter photo</a>
+			</div>
+	 </div>
+	
+	</aside>
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 		<nav>
@@ -39,15 +56,21 @@
 					chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
 				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
 					décorateur(trice)</p>
+					
 			</article>
 		</section>
-		<section id="portfolio">
-			<h2>Mes Projets</h2>
+		<section id = "portfolio">
+            <div class = "sub-title-and-logo-modif">
+			      	<h2>Mes Projets</h2>
+					<div class= "logo-modif"> 
+						<a href= "#btn-modifier" class = "link-modal js-modal"><img src="/FrontEnd/assets/icons/logo-modifier.png" alt=" logo modififier"> Modifier</a>
+					</div>
+			</div>
 			<menu class="menu-gallery">
-				<h3 class="toute-la-gallery element-gallery " data-id="id">Tous</h3>
-				<h3 class="objet-gallery element-gallery">Objets</h3>
-				<h3 class="appartement-gallery element-gallery">Appartements</h3>
-				<h3 class="restaurants-hotels-gallery element-gallery">hôtels & Restaurants</h3>
+				<h3 class = "toute-la-gallery element-gallery " data-id="id">Tous</h3>
+				<h3 class = "objet-gallery element-gallery">Objets</h3>
+				<h3 class = "appartement-gallery element-gallery">Appartements</h3>
+				<h3 class = "restaurants-hotels-gallery element-gallery">hôtels & Restaurants</h3>
 
 			</menu>
 			<div class="gallery">
@@ -119,13 +142,10 @@
 			</ul>
 		</nav>
 	</footer>
+	
+<!-- <script type="module" src="./index.js"></script> -->
 	<script src="/FrontEnd/index.js"></script>
-	<!-- <script src="/FrontEnd/login.js"></script> -->
-
-
-
-
-
+</aside>
 </body>
 
 </html>

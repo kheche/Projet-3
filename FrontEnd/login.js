@@ -36,8 +36,13 @@ form.addEventListener("submit", (event) => {
       }
     })
     .then((data) => {
-      localStorage.setItem("token", data.token);
       console.log(data);
+      localStorage.setItem("token", data.token);
+      console.log(localStorage.getItem("token"));
+      localStorage.setItem("id", data.userId);
+      console.log(localStorage.getItem("id"));
+      // La avalidation de l'inscription de l'utisateur ===> index.html
+      window.location.replace("index.html");
     })
 
     .catch((err) => {

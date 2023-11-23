@@ -85,6 +85,7 @@ getWorks();
 
 // *******************LA PARTIE MODALE MODALE*******************//
 const galleryModal = document.querySelector(".gallery-modal");
+
 function getWorksForModal() {
   fetch(url)
     .then((res) => {
@@ -105,22 +106,13 @@ function getWorksForModal() {
     });
 }
 
-// const figureImg = document.createElement("figure");
-// const imgModal = document.createElement("img");
-// galleryModal.appendChild(figureImg);
-// figureImg.appendChild(imgModal);
-// const poubelle = document.createElement("span");
-// imgModal.appendChild(poubelle);
-// console.log(poubelle);
-
 getWorksForModal();
-
+// PARTIE DE LA FERMETURE ET OUVERTURE DE LA MODAL//
 let modal = null;
 console.log(galleryModal);
 const openModal = function (e) {
   e.preventDefault();
   const valeursHref = document.querySelector(e.target.getAttribute("href"));
-
   //Annulation du display = none
   valeursHref.style.display = null;
   valeursHref.removeAttribute("aria-hidden");

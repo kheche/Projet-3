@@ -3,7 +3,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   let email = document.querySelector("#mail").value;
   let password = document.querySelector("#pswd").value;
-  console.log(` voici mon ${email} et mon password ${password}`);
+
   // Je controle le saisi de l'utilisation "email et pmot de passe//
 
   const btnSubmit = document.querySelector(".submit");
@@ -49,6 +49,7 @@ form.addEventListener("submit", (event) => {
       logErreur.innerHTML = "Merci de saisir des identfiants corrects";
       logErreur.style.color = "red";
     });
+  // La fermeture de la modal en cliquant sur le document
   document.addEventListener("click", () => {
     messageErreur.innerHTML = "";
     logErreur.innerHTML = "";

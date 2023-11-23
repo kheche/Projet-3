@@ -308,23 +308,39 @@ footer nav ul {
 
 .block-modal {
   background-color: #ffff;
-  width: 620px;
-  height: 688px;
+  width: 530px;
+  height: 660px;
   margin: auto;
   position: relative;
   margin-top: 25;
-  /* padding-top: 25px; */
   border-radius: 10px;
+  z-index: -2;
+  position: absolute;
+  background-color: gold;
 }
+
+.block-modal2 {
+  background-color: #ffff;
+  width: 530px;
+  height: 660px;
+  margin: auto;
+  position: relative;
+  margin-top: 25;
+  border-radius: 10px;
+  z-index: -1;
+
+  position: absolute;
+}
+
 .gallery-modal {
   height: 60%;
-  width: 80%;
+  width: 79%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   border-bottom: solid gray 2px;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 
 .croix-fermeture-modal {
@@ -361,6 +377,7 @@ footer nav ul {
 }
 .logo-modif a {
   text-decoration: none;
+  color: #000;
 }
 
 .btn-ajouter-photo {
@@ -380,28 +397,70 @@ footer nav ul {
   align-items: center;
 }
 
-.figureModal {
-  margin: 10px 5px;
-  width: 76.61px;
-  height: 102.57px;
-  position: relative;
-}
-
-.figureModal .content-i {
+.btn-valider-photo {
+  text-decoration: none;
+  background-color: rgba(128, 128, 128, 0.64);
+  border-radius: 25px;
+  color: #ffff;
+  width: 237px;
+  height: 36px;
+  font-size: 1em;
   position: absolute;
-  right: 5px;
-  top: 5px;
-  cursor: pointer;
-  color: white;
-  width: 25px;
-  height: 25px;
-  background-color: #000;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.figureModal {
+  margin: 10px 5px;
+  width: 70.61px;
+  height: 102.57px;
+  position: relative;
 }
 
 .img-modal {
   width: 100%;
   object-fit: cover;
+}
+.figureModal .content-i {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+  color: rgba(214, 217, 221, 0.822);
+  width: 21px;
+  height: 21px;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+
+.link-login,
+.link-logout {
+  text-decoration: none;
+  color: black;
+}
+.link-login,
+.link-logout:hover {
+  color: blue;
+}
+
+.black-line {
+  width: 100%;
+  height: 59px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.black-line a {
+  color: #ffff;
+}
+.black-line i {
+  margin-right: 10px;
 }

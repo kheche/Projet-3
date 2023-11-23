@@ -15,71 +15,14 @@
 </head>
 
 <body>
-		<div class= "logo-modif  black-line" > 
-						<a href= "#btn-modifier" class = "link-modal js-modal"><i class="fa-regular fa-pen-to-square"></i>Mode édition</a>
-		</div>
-	<aside id="btn-modifier" class = "overlay" role="dialog" aria-labelledby="heading-modal" aria-hidden="true" style="display: none;" >
 
-	 <div class="block-modal js-modal-stop">
-		<div class = "croix-fermeture-modal js-close-modal">x</div>
-		<h1 class="modal-title">Galerie photo</h1>
-		<div class=" gallery-modal" >
-
-			<!-- CE "DIV" CONTIENT LES PHOTOS RECUPRÉES DE LA BASES DES DONNÉES -->
-	
-		</div>
-		<div class="footer-block-modal">
-		
-			<a href="#modal2 " class="btn-ajouter-photo"> Ajouter photo</a>
-			</div>
-
-			<!-- Ajout de la deuxième fenetre modal pour ajouter des photo -->
-
-	 </div>
- <!-- *****************DEUXIEME BLOCK MODAL*********************** -->
-	 <div class= "block-modal  js-modal-stop   block-modal2">
-		<div class = "croix-fermeture-modal js-close-modal">x</div>
-		<h1 class="modal-title">Ajouter photo</h1>
-	<div class=" gallery-modal" >
-
-			<!-- CE "DIV" CONTIENT LES PHOTOS RECUPRÉES DE LA BASES DES DONNÉES -->
-<div class="image-icon">
-			<i class="fa-regular fa-image"></i>
-</div>
-<div class="zone-telechargement">
- <label for="photo" class="file-label">+Ajouter une photo</label>
-<input type="file" id="photo" name="photo" accept="image/png, image/jpeg" />
-<p class="formats-acceptes">jpg,png : 40 mo</p>
-
-</div>
-<div class="block-title-picture">
-<label for="titre-photo" class="img-title">Titre</label><br>
-<input type="text" >
-</div>
-<div class="block-category">
-	<label for="categporie-photo">Categorie</label><br>
-	<select name="category" id="category">
-		<option value="appartements">Appartements</option>
-		<option value="objet">Objets</option>
-		<option value="restuarants">restaurants</option>
-	</select>
-</div>
-	</div>
-		<div class="footer-block-modal">
-		
-			<a href="#modal2 " class="btn-ajouter-photo   btn-valider-photo"> Valider</a>
-			</div>
-
-			<!-- Ajout de la deuxième fenetre modal pour ajouter des photos -->
-		</div>
-	 </aside>
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 		<nav>
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
-				<li><a href="#" class = "link-logout">Logout</a></li>
+				<li><a href="/FrontEnd/login.html" class="link-login">Login</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -102,13 +45,9 @@
 			</article>
 		</section>
 		<section id = "portfolio">
-            <div class = "sub-title-and-logo-modif">
+        
 			      	<h2>Mes Projets</h2>
-					<div class= "logo-modif"> 
-						<a href= "#btn-modifier" class = "link-modal js-modal"><img src="/FrontEnd/assets/icons/logo-modifier.png" alt=" logo modififier"> Modifier</a>
-					</div>
-			</div>
-			<menu class="menu-gallery">
+			 <menu class="menu-gallery">
 				<h3 class = "toute-la-gallery element-gallery " data-id="id">Tous</h3>
 				<h3 class = "objet-gallery element-gallery">Objets</h3>
 				<h3 class = "appartement-gallery element-gallery">Appartements</h3>
@@ -116,7 +55,50 @@
 
 			</menu>
 			<div class="gallery">
-			<!-- [ "div " de RECUPERATION DES TRAVEAUX (PHOTOS POUR LA GALLERI DE LA PAGE "HOMEPAGE")] -->
+				<!-- <figure>
+				<img >
+				<figcaption>Abajour Tahina</figcaption>
+			</figure>
+			<figure>
+				<img src="">
+				<figcaption>Appartement Paris V</figcaption>
+			</figure>
+			<figure>
+				<img src="">
+				<figcaption>Restaurant Sushisen - Londres</figcaption>
+			</figure>
+			<figure>
+				<img src="">
+				<figcaption>Villa “La Balisiere” - Port Louis</figcaption>
+			</figure>
+			<figure>
+				<img src="">
+				<figcaption>Structures Thermopolis</figcaption>
+			</figure>
+			<figure>
+				<img src="">
+				<figcaption>Appartement Paris X</figcaption>
+			</figure>
+			<figure>
+				<img src="" >
+				<figcaption>Pavillon “Le coteau” - Cassis</figcaption>
+			</figure>
+			<figure>
+				<img src="">
+				<figcaption>Villa Ferneze - Isola d’Elba</figcaption>
+			</figure>
+			<figure>
+				<img src="">
+				<figcaption>Appartement Paris XVIII</figcaption>
+			</figure>
+			<figure>
+				<img src="">
+				<figcaption>Bar “Lullaby” - Paris</figcaption>
+			</figure>
+			<figure>
+				<img src="">
+				<figcaption>Hotel First Arte - New Delhi</figcaption>
+			</figure> -->
 			</div>
 		</section>
 		<section id="contact">
@@ -144,7 +126,8 @@
 	
 <!-- <script type="module" src="./index.js"></script> -->
 	<script src="/FrontEnd/index.js"></script>
-</aside>
+    <script src="/FrontEnd/login.js"></script>
+
 </body>
 
 </html>

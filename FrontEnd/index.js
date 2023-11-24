@@ -107,25 +107,30 @@ function getWorksForModal() {
 }
 
 getWorksForModal();
+
 // PARTIE DE LA FERMETURE ET OUVERTURE DE LA MODAL//
 let modal = null;
 console.log(galleryModal);
 const openModal = function (e) {
   e.preventDefault();
   const valeursHref = document.querySelector(e.target.getAttribute("href"));
+  console.log(valeursHref);
   //Annulation du display = none
   valeursHref.style.display = null;
   valeursHref.removeAttribute("aria-hidden");
   valeursHref.setAttribute("aria-modal", "true");
   modal = valeursHref;
   modal.addEventListener("click", closeModal);
-  //   Fermeturede de la fenetre modal à partir de
-  modal.querySelector(".js-close-modal").addEventListener("click", closeModal);
-  modal
-    .querySelector(".js-modal-stop")
-    .addEventListener("click", stopingPropagation);
+  //   Fermeturede de la fenetre modal à partir de LA CROIX//
+  modal.querySelectorAll(".js-close-modal").forEach((close) => {
+    close.addEventListener("click", closeModal);
+  });
+  // ARRET DE PROPATION DE LA FERMETURE SUR TOUTE LA FETRE MODALE AU CLIC//
+  modal.querySelectorAll(".js-modal-stop").forEach((stop) => {
+    stop.addEventListener("click", stopingPropagation);
+  });
 };
-
+// LA FONCTION DE LA FERMETURE DE  LA FENETRE MODAL//
 const closeModal = function (e) {
   if (modal === null) return;
   e.preventDefault();
@@ -133,12 +138,14 @@ const closeModal = function (e) {
   modal.setAttribute("aria-hidden", "true");
   modal.removeAttribute("aria-modal");
   modal.removeEventListener("click", closeModal);
-  modal
-    .querySelector(".js-close-modal")
-    .removeEventListener("click", closeModal);
-  modal
-    .querySelector(".js-modal-stop")
-    .removeEventListener("click", stopingPropagation);
+  modal.querySelectorAll(".js-close-modal").forEach((close) => {
+    close.addEventListener("click", closeModal);
+  });
+
+  modal.querySelectorAll(".js-modal-stop").forEach((f) => {
+    f.removeEventListener("click", stopingPropagation);
+  });
+
   modal = null;
 };
 const stopingPropagation = function (e) {
@@ -152,3 +159,4 @@ document.querySelectorAll(".js-modal").forEach((a) => {
 
 const linkModal = document.querySelector(".link-modal");
 linkModal.addEventListener("click", openModal);
+console.log(linkModal);

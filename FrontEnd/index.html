@@ -37,31 +37,31 @@
 
 	 </div>
  <!-- *****************DEUXIEME BLOCK MODAL*********************** -->
-	 <div class= "block-modal  js-modal-stop   block-modal2">
-		<div class = "croix-fermeture-modal js-close-modal">x</div>
+	 <div class= "block-modal    block-modal2  js-modal-stop">
+		<div class = "croix-fermeture-modal js-close-modal"><i class="fa-solid fa-xmark"></i></div>
 		<h1 class="modal-title">Ajouter photo</h1>
-	<div class=" gallery-modal" >
+	<div class=" gallery-modal gallery-modal2 ">
 
 			<!-- CE "DIV" CONTIENT LES PHOTOS RECUPRÉES DE LA BASES DES DONNÉES -->
-<div class="image-icon">
-			<i class="fa-regular fa-image"></i>
-</div>
+<div class="la-fleche"><i class="fa-solid fa-arrow-left"></i></div>
 <div class="zone-telechargement">
- <label for="photo" class="file-label">+Ajouter une photo</label>
+	<div class="image-icon">
+		<i class="fa-regular fa-image"></i>
+</div>
+ <label for="photo" class="file-label"> + Ajouter  photo</label>
 <input type="file" id="photo" name="photo" accept="image/png, image/jpeg" />
 <p class="formats-acceptes">jpg,png : 40 mo</p>
-
 </div>
 <div class="block-title-picture">
-<label for="titre-photo" class="img-title">Titre</label><br>
-<input type="text" >
+<label for="titre-photo" class="label-categorie-titre">Titre</label>
+<input type="text" id="titre-photo">
 </div>
 <div class="block-category">
-	<label for="categporie-photo">Categorie</label><br>
-	<select name="category" id="category">
-		<option value="appartements">Appartements</option>
+	<label for="categorie-photo" class="label-categorie-titre">Catégorie</label><br>
+	<select name="category" id="categorie-photo">
+		<!-- <option value="appartements">Appartements</option>
 		<option value="objet">Objets</option>
-		<option value="restuarants">restaurants</option>
+		<option value="restuarants">restaurants</option> -->
 	</select>
 </div>
 	</div>
@@ -105,7 +105,7 @@
             <div class = "sub-title-and-logo-modif">
 			      	<h2>Mes Projets</h2>
 					<div class= "logo-modif"> 
-						<a href= "#btn-modifier" class = "link-modal js-modal"><img src="/FrontEnd/assets/icons/logo-modifier.png" alt=" logo modififier"> Modifier</a>
+						<a href= "#btn-modifier" class = "link-modal js-modal"><i class="fa-regular fa-pen-to-square"></i> Modifier</a>
 					</div>
 			</div>
 			<menu class="menu-gallery">

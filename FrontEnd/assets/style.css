@@ -309,20 +309,19 @@ footer nav ul {
 .block-modal {
   background-color: #ffff;
   width: 530px;
-  height: 660px;
+  height: 688px;
   margin: auto;
   position: relative;
   margin-top: 25;
   border-radius: 10px;
-  z-index: -2;
+  z-index: 2;
   position: absolute;
-  background-color: gold;
 }
 
 .block-modal2 {
   background-color: #ffff;
   width: 530px;
-  height: 660px;
+  height: 688px;
   margin: auto;
   position: relative;
   margin-top: 25;
@@ -340,21 +339,27 @@ footer nav ul {
   flex-wrap: wrap;
   justify-content: space-between;
   border-bottom: solid gray 2px;
-  padding-bottom: 30px;
+  padding-bottom: 45px;
 }
 
 .croix-fermeture-modal {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 15px;
+  top: 15px;
   cursor: pointer;
-  background-color: red;
-  color: white;
-  width: 15px;
-  height: 15px;
+  font-size: 22px;
+
   text-align: center;
 }
+.la-fleche {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  cursor: pointer;
+  font-size: 22px;
 
+  text-align: center;
+}
 .modal-title {
   color: #000;
   text-align: center;
@@ -378,6 +383,37 @@ footer nav ul {
 .logo-modif a {
   text-decoration: none;
   color: #000;
+  margin-left: 25px;
+  font: 1em sans-serif;
+}
+.link-modal i {
+  margin-right: 10px;
+}
+
+.figureModal {
+  margin: 10px 5px;
+  width: 70.61px;
+  height: 102.57px;
+  position: relative;
+}
+
+.img-modal {
+  width: 100%;
+  object-fit: cover;
+}
+.figureModal .content-i {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+  color: rgba(214, 217, 221, 0.822);
+  width: 21px;
+  height: 21px;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
 }
 
 .btn-ajouter-photo {
@@ -413,31 +449,6 @@ footer nav ul {
   justify-content: center;
   align-items: center;
 }
-.figureModal {
-  margin: 10px 5px;
-  width: 70.61px;
-  height: 102.57px;
-  position: relative;
-}
-
-.img-modal {
-  width: 100%;
-  object-fit: cover;
-}
-.figureModal .content-i {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  cursor: pointer;
-  color: rgba(214, 217, 221, 0.822);
-  width: 21px;
-  height: 21px;
-  background-color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 13px;
-}
 
 .link-login,
 .link-logout {
@@ -463,4 +474,47 @@ footer nav ul {
 }
 .black-line i {
   margin-right: 10px;
+}
+/* Mise en page de modal2 ajouter photo */
+.gallery-modal2 {
+  display: flex;
+  flex-direction: column;
+}
+.zone-telechargement {
+  background-color: #e8f1f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 420px;
+  height: 169px;
+}
+.image-icon {
+  margin: 0px 0 15px 0;
+  font-size: 45px;
+  color: rgba(198, 194, 194, 0.635);
+}
+.file-label {
+  width: 179px;
+  height: 36px;
+  border-radius: 50px;
+  background-color: rgba(198, 194, 194, 0.635);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 7px;
+}
+input[type="file"] {
+  display: none;
+}
+#titre-photo,
+#categorie-photo {
+  width: 420px;
+  height: 51px;
+  background-color: white;
+}
+.label-categorie-titre {
+  line-height: 35px;
+  font-size: 1.2em;
 }

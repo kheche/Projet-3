@@ -1,3 +1,5 @@
+const tokenVerif = localStorage.getItem("token");
+console.log(tokenVerif);
 const url = "http://localhost:5678/api/works/";
 const sectionGallery = document.querySelector(".gallery");
 const allpicturs = document.querySelector(".toute-la-gallery");
@@ -39,6 +41,7 @@ function getWorks() {
           <figure>
           <img src = " ${dataFilters[j].imageUrl}" >
           <figcaption>${dataFilters[j].title}</figcaption>
+          
         </figure>
           
           `;
@@ -56,6 +59,8 @@ function getWorks() {
           <figure>
           <img src = " ${dataFilters[j].imageUrl}" >
           <figcaption>${dataFilters[j].title}</figcaption>
+          <span>${dataFilters[j].id}<span>
+
         </figure>
           
           `;
@@ -160,3 +165,86 @@ document.querySelectorAll(".js-modal").forEach((a) => {
 const linkModal = document.querySelector(".link-modal");
 linkModal.addEventListener("click", openModal);
 console.log(linkModal);
+// &&&&&&&&&&&&&&&&&&&&&&&&&&TRAITEMENT DES MODAL EN JAVASCRIPT&&&&&&&&&&&&&&&&//
+
+const blockModal2 = document.querySelector(".block-modal2");
+const imgRecuperee = document.querySelector("#photo-input");
+const btnAjouterPhoto = document.querySelector(".btn-ajouter-photo");
+const flecheDeRecule = document.querySelector(".la-fleche");
+const btnValiderphoto = document.querySelector(".btn-valider-photo");
+const titrePhoto = document.querySelector("#titre-photo");
+const categoriePhoto = document.querySelector("#categorie-photo");
+console.log(titrePhoto);
+
+btnAjouterPhoto.addEventListener("click", () => {
+  blockModal2.style.zIndex = 100;
+});
+
+flecheDeRecule.addEventListener("click", () => {
+  blockModal2.style.zIndex = -100;
+});
+
+// ***************CREATION DE FONCTION DE TEST DU CHAMP DES INPUTS ET SELECT*************
+const verifyInput = function () {
+  console.log(titrePhoto.value, categoriePhoto.value);
+  if (
+    titrePhoto.value != "" &&
+    categoriePhoto.value != "" &&
+    imgRecuperee.value != ""
+  ) {
+    btnValiderphoto.style.background = "green";
+    btnValiderphoto.style.color = "white";
+  } else {
+    btnValiderphoto.style.background = "red";
+  }
+};
+titrePhoto.addEventListener("input", verifyInput);
+categoriePhoto.addEventListener("change", verifyInput);
+imgRecuperee.addEventListener("change", verifyInput);
+
+btnValiderphoto.addEventListener("click", () => {
+  if (
+    titrePhoto.value == "" ||
+    categoriePhoto.value == "" ||
+    imgRecuperee.value == ""
+  ) {
+    alert("Veuillez remplir tous les champs ");
+    return;
+  }
+  // LA FORMEDATA A ENVOYER AU SERVEUR//
+  const formData = new FormData();
+  formData.append("title", titrePhoto.value);
+  formData.append("category", categoriePhoto.value);
+  formData.append("image", imgRecuperee.files[0]);
+  postData(formData);
+  console.log(formData);
+});
+
+function postData(formData) {
+  console.log(tokenVerif);
+  fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    body: formData,
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${tokenVerif}`,
+    },
+  })
+    .then((response) => {
+      console.log(response.json());
+    })
+    .catch((error) => {});
+}
+
+parametreHeaderDeFetch = {
+  method: "DELETE",
+  headers: { "Content-Type": "application/json" },
+  mode: "cors",
+};
+const id = document.querySelector("#supp");
+console.log(id);
+fetch(`http://localhost:5678/api/works/`, parametreHeaderDeFetch)
+  .then((lesId) => lesId.json())
+  .then((donnees) => {
+    console.log(donnees);
+  });

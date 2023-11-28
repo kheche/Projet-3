@@ -513,6 +513,8 @@ input[type="file"] {
   width: 420px;
   height: 51px;
   background-color: white;
+  box-shadow: 1px -1px 12px 4px rgb(228, 226, 226);
+  border: none;
 }
 .label-categorie-titre {
   line-height: 35px;

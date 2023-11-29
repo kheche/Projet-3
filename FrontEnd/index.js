@@ -280,3 +280,19 @@ function postData(formData) {
     })
     .catch((error) => {});
 }
+<<<<<<< HEAD
+=======
+
+parametreHeaderDeFetch = {
+  method: "DELETE",
+  headers: { "Content-Type": "application/json" },
+  mode: "cors",
+};
+const id = document.querySelector("#supp");
+console.log(id);
+fetch(`http://localhost:5678/api/works/`, parametreHeaderDeFetch)
+  .then((lesId) => lesId.json())
+  .then((donnees) => {
+    console.log(donnees);
+  });
+>>>>>>> 3b222332d130d5dc0bcabb1d46e3a9f11ceed8e2

@@ -114,6 +114,8 @@ function getWorksForModal() {
       }
     });
 }
+
+// <<<<<<<<<<<<<<<<<<<<<<<le test de retour en arrier<<<<<<<<<<<<<<<
 function creatFigureItem(work) {
   const figureElement = document.createElement("figure");
   figureElement.className = "figureModal";

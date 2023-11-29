@@ -1,3 +1,5 @@
+const tokenVerif = localStorage.getItem("token");
+console.log(tokenVerif);
 const url = "http://localhost:5678/api/works/";
 const sectionGallery = document.querySelector(".gallery");
 const allpicturs = document.querySelector(".toute-la-gallery");
@@ -39,6 +41,7 @@ function getWorks() {
           <figure>
           <img src = " ${dataFilters[j].imageUrl}" >
           <figcaption>${dataFilters[j].title}</figcaption>
+          
         </figure>
           
           `;
@@ -56,6 +59,8 @@ function getWorks() {
           <figure>
           <img src = " ${dataFilters[j].imageUrl}" >
           <figcaption>${dataFilters[j].title}</figcaption>
+          <span>${dataFilters[j].id}<span>
+
         </figure>
           
           `;
@@ -73,7 +78,9 @@ function getWorks() {
           <figure>
           <img src = " ${dataFilters[j].imageUrl}" >
           <figcaption>${dataFilters[j].title}</figcaption>
+         
         </figure>
+        <div> ${dataFilters[j].id}</div>
           
           `;
         }
@@ -93,17 +100,60 @@ function getWorksForModal() {
     })
     .then((data) => {
       for (let i in data) {
-        galleryModal.innerHTML += `
-        <figure class = "figureModal" >
-				<img src = ${data[i].imageUrl} class = "img-modal"> 
-        <span class = "content-i"> 
-        <i class="fa-solid fa-trash-can"></i>
-        </span>
-      	</figure>
-        
-        `;
+        creatFigureItem(data[i]);
+
+        // galleryModal.innerHTML += `
+        // <figure class = "figureModal" >
+        // <img src = ${data[i].imageUrl} class = "img-modal">
+        // <span class = "content-i  delete-items">
+        // <i class="fa-solid fa-trash-can"></i>
+        // </span>
+        // </figure>
+
+        // `;
       }
     });
+}
+function creatFigureItem(work) {
+  const figureElement = document.createElement("figure");
+  figureElement.className = "figureModal";
+  figureElement.setAttribute("data-id", work.id);
+  const imgElement = document.createElement("img");
+  imgElement.src = work.imageUrl;
+  imgElement.className = "img-modal";
+  figureElement.appendChild(imgElement);
+  const contentIEement = document.createElement("span");
+  contentIEement.className = "content-i";
+
+  const iconElement = document.createElement("i");
+  iconElement.className = "fa-solid fa-trash-can";
+  contentIEement.appendChild(iconElement);
+  figureElement.appendChild(contentIEement);
+
+  galleryModal.appendChild(figureElement);
+  contentIEement.addEventListener("click", (e) => {
+    e.preventDefault();
+    deleteWorkById(work.id);
+  });
+}
+
+function deleteWorkById(id) {
+  const confirmation = confirm("Etes vous sur de vouloir supprimer ce travail");
+  if (confirmation) {
+    fetch(`http://localhost:5678/api/works/${id}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${tokenVerif}`,
+      },
+    })
+      .then((response) => {
+        console.log(response.json());
+        let workToRemove = document.querySelector(`figure[data-id="${id}"]`);
+        workToRemove.remove();
+      })
+      .catch((error) => {});
+  }
 }
 
 getWorksForModal();
@@ -160,3 +210,73 @@ document.querySelectorAll(".js-modal").forEach((a) => {
 const linkModal = document.querySelector(".link-modal");
 linkModal.addEventListener("click", openModal);
 console.log(linkModal);
+// &&&&&&&&&&&&&&&&&&&&&&&&&&TRAITEMENT DES MODAL EN JAVASCRIPT&&&&&&&&&&&&&&&&//
+
+const blockModal2 = document.querySelector(".block-modal2");
+const imgRecuperee = document.querySelector("#photo-input");
+const btnAjouterPhoto = document.querySelector(".btn-ajouter-photo");
+const flecheDeRecule = document.querySelector(".la-fleche");
+const btnValiderphoto = document.querySelector(".btn-valider-photo");
+const titrePhoto = document.querySelector("#titre-photo");
+const categoriePhoto = document.querySelector("#categorie-photo");
+console.log(titrePhoto);
+
+btnAjouterPhoto.addEventListener("click", () => {
+  blockModal2.style.zIndex = 100;
+});
+
+flecheDeRecule.addEventListener("click", () => {
+  blockModal2.style.zIndex = -100;
+});
+
+// ***************CREATION DE FONCTION DE TEST DU CHAMP DES INPUTS ET SELECT*************
+const verifyInput = function () {
+  console.log(titrePhoto.value, categoriePhoto.value);
+  if (
+    titrePhoto.value != "" &&
+    categoriePhoto.value != "" &&
+    imgRecuperee.value != ""
+  ) {
+    btnValiderphoto.style.background = "green";
+    btnValiderphoto.style.color = "white";
+  } else {
+    btnValiderphoto.style.background = "red";
+  }
+};
+titrePhoto.addEventListener("input", verifyInput);
+categoriePhoto.addEventListener("change", verifyInput);
+imgRecuperee.addEventListener("change", verifyInput);
+
+btnValiderphoto.addEventListener("click", () => {
+  if (
+    titrePhoto.value == "" ||
+    categoriePhoto.value == "" ||
+    imgRecuperee.value == ""
+  ) {
+    alert("Veuillez remplir tous les champs ");
+    return;
+  }
+  // LA FORMEDATA A ENVOYER AU SERVEUR//
+  const formData = new FormData();
+  formData.append("title", titrePhoto.value);
+  formData.append("category", categoriePhoto.value);
+  formData.append("image", imgRecuperee.files[0]);
+  postData(formData);
+  console.log(formData);
+});
+
+function postData(formData) {
+  console.log(tokenVerif);
+  fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    body: formData,
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${tokenVerif}`,
+    },
+  })
+    .then((response) => {
+      console.log(response.json());
+    })
+    .catch((error) => {});
+}

@@ -48,9 +48,9 @@
 	<div class="image-icon">
 		<i class="fa-regular fa-image"></i>
 </div>
- <label for="photo" class="file-label"> + Ajouter  photo</label>
-<input type="file" id="photo" name="photo" accept="image/png, image/jpeg" />
-<p class="formats-acceptes">jpg,png : 40 mo</p>
+ <label for="photo-input" class="file-label"> + Ajouter  photo</label>
+<input type="file" id="photo-input" name="photo" accept="image/png, image/jpeg" />
+<p class="formats-acceptes">jpg, png : 40 mo</p>
 </div>
 <div class="block-title-picture">
 <label for="titre-photo" class="label-categorie-titre">Titre</label>
@@ -59,22 +59,24 @@
 <div class="block-category">
 	<label for="categorie-photo" class="label-categorie-titre">Catégorie</label><br>
 	<select name="category" id="categorie-photo">
-		<!-- <option value="appartements">Appartements</option>
-		<option value="objet">Objets</option>
-		<option value="restuarants">restaurants</option> -->
+		<option value=""> Selection une catégorie</option>
+		 <option value="1">Objets</option>
+		 <option value="2">Appartements</option>
+		<option value="3">Hotels&restaurants</option> 
 	</select>
 </div>
 	</div>
 		<div class="footer-block-modal">
 		
 			<a href="#modal2 " class="btn-ajouter-photo   btn-valider-photo"> Valider</a>
+			
 			</div>
 
 			<!-- Ajout de la deuxième fenetre modal pour ajouter des photos -->
 		</div>
 	 </aside>
 	<header>
-		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
 			<ul>
 				<li>projets</li>
@@ -106,6 +108,7 @@
 			      	<h2>Mes Projets</h2>
 					<div class= "logo-modif"> 
 						<a href= "#btn-modifier" class = "link-modal js-modal"><i class="fa-regular fa-pen-to-square"></i> Modifier</a>
+						
 					</div>
 			</div>
 			<menu class="menu-gallery">
@@ -143,7 +146,7 @@
 	</footer>
 	
 <!-- <script type="module" src="./index.js"></script> -->
-	<script src="/FrontEnd/index.js"></script>
+	<script src="index.js"></script>
 </aside>
 </body>
 

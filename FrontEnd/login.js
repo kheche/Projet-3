@@ -49,7 +49,7 @@ form.addEventListener("submit", (event) => {
       logErreur.innerHTML = "Merci de saisir des identfiants corrects";
       logErreur.style.color = "red";
     });
-  // La fermeture de la modal en cliquant sur le document
+  // CACHER LES MESSAGES D'erreur  en cliquant sur le document
   document.addEventListener("click", () => {
     messageErreur.innerHTML = "";
     logErreur.innerHTML = "";

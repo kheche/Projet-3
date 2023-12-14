@@ -1,6 +1,6 @@
 const tokenVerif = localStorage.getItem("token");
 console.log(tokenVerif);
-const url = "http://localhost:5678/api/works/";
+// *************RECUPERATION DES ELEMENTS DE FITRAGE DE LA GALLERI****************
 const sectionGallery = document.querySelector(".gallery");
 const allpicturs = document.querySelector(".toute-la-gallery");
 const theObjects = document.querySelector(".objet-gallery");
@@ -10,19 +10,20 @@ const theHotelsRestautrants = document.querySelector(
 );
 
 function getWorks() {
-  fetch(url)
+  fetch("http://localhost:5678/api/works/")
     .then((res) => {
       return res.json();
     })
     .then((data) => {
       for (let i in data) {
         sectionGallery.innerHTML += `
-        <figure>
-				<img src = " ${data[i].imageUrl}" >
-				<figcaption>${data[i].title}</figcaption>
-			</figure>
-        
-        `;
+           <figure>
+         	<img src = " ${data[i].imageUrl}" >
+       	<figcaption>${data[i].title}</figcaption>
+
+       </figure>
+
+          `;
       }
       // *************AFFICHAGE DE TOUTE LA GALLERY VAEC LE BOUTON "TOUS"************
       allpicturs.addEventListener("click", function () {
@@ -59,14 +60,12 @@ function getWorks() {
           <figure>
           <img src = " ${dataFilters[j].imageUrl}" >
           <figcaption>${dataFilters[j].title}</figcaption>
-          <span>${dataFilters[j].id}<span>
-
-        </figure>
+         </figure>
           
           `;
         }
       });
-      // *************AFFICHAGE DE LA  LA GALLERY  OBJET VAEC LE BOUTON "Hotels & Restaurant"************
+      // *************AFFICHAGE DE LA  LA GALLERY  LE BOUTON "Hotels & Restaurant"************
       theHotelsRestautrants.addEventListener("click", function () {
         const dataFilters = data.filter(function (dataFilter) {
           return dataFilter.category.name === "Hotels & restaurants";
@@ -78,9 +77,8 @@ function getWorks() {
           <figure>
           <img src = " ${dataFilters[j].imageUrl}" >
           <figcaption>${dataFilters[j].title}</figcaption>
-         
         </figure>
-        <div> ${dataFilters[j].id}</div>
+      
           
           `;
         }
@@ -94,7 +92,7 @@ getWorks();
 const galleryModal = document.querySelector(".gallery-modal");
 
 function getWorksForModal() {
-  fetch(url)
+  fetch("http://localhost:5678/api/works/")
     .then((res) => {
       return res.json();
     })
@@ -114,12 +112,14 @@ function getWorksForModal() {
       }
     });
 }
-
-// <<<<<<<<<<<<<<<<<<<<<<<le test de retour en arrier<<<<<<<<<<<<<<<
 function creatFigureItem(work) {
+  const categorieElement = document.querySelector("[name = 'category']");
+
   const figureElement = document.createElement("figure");
+  // &&&&&& className permet de rajouter une class à un element en js &&&&
   figureElement.className = "figureModal";
   figureElement.setAttribute("data-id", work.id);
+  console.log(figureElement);
   const imgElement = document.createElement("img");
   imgElement.src = work.imageUrl;
   imgElement.className = "img-modal";
@@ -137,10 +137,13 @@ function creatFigureItem(work) {
     e.preventDefault();
     deleteWorkById(work.id);
   });
+  console.log(work.category.name);
 }
 
 function deleteWorkById(id) {
-  const confirmation = confirm("Etes vous sur de vouloir supprimer ce travail");
+  const confirmation = confirm(
+    "Êtes vous sûr de vouloir supprimer cet élément"
+  );
   if (confirmation) {
     fetch(`http://localhost:5678/api/works/${id}`, {
       method: "DELETE",
@@ -282,19 +285,3 @@ function postData(formData) {
     })
     .catch((error) => {});
 }
-<<<<<<< HEAD
-=======
-
-parametreHeaderDeFetch = {
-  method: "DELETE",
-  headers: { "Content-Type": "application/json" },
-  mode: "cors",
-};
-const id = document.querySelector("#supp");
-console.log(id);
-fetch(`http://localhost:5678/api/works/`, parametreHeaderDeFetch)
-  .then((lesId) => lesId.json())
-  .then((donnees) => {
-    console.log(donnees);
-  });
->>>>>>> 3b222332d130d5dc0bcabb1d46e3a9f11ceed8e2

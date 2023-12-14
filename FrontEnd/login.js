@@ -11,6 +11,7 @@ form.addEventListener("submit", (event) => {
   const logErreur = document.createElement("p");
   btnSubmit.appendChild(logErreur);
   btnSubmit.appendChild(messageErreur);
+  const btnModify = document.querySelector("#btn-modifier");
   if (email === "" || password === "") {
     messageErreur.innerHTML =
       "Veuillez remplir les champs ci-dessus s'il vous plait merci !";

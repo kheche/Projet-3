@@ -9,6 +9,27 @@ const theHotelsRestautrants = document.querySelector(
   ".restaurants-hotels-gallery"
 );
 
+// *************apparution et la disparution des (modier,logout,login)*******************//
+
+const btnModify = document.querySelectorAll(".btn-display");
+const btnLogin = document.querySelector(".link-login");
+const btnLogOut = document.querySelector(".link-logout");
+console.log(btnModify);
+
+btnModify.forEach((btnDisplay) => {
+  if (tokenVerif == null) {
+    btnDisplay.style.display = "none";
+  } else {
+    btnLogin.style.display = "none";
+  }
+});
+btnLogOut.addEventListener("click", (e) => {
+  e.preventDefault();
+  btnModify.forEach((btnDisplay) => {
+    btnDisplay.style.display = "none";
+    btnLogin.style.display = "inline-block";
+  });
+});
 function getWorks() {
   fetch("http://localhost:5678/api/works/")
     .then((res) => {

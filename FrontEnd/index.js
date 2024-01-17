@@ -1,6 +1,6 @@
 const tokenVerif = localStorage.getItem("token");
 console.log(tokenVerif);
-// *************RECUPERATION DES ELEMENTS DE FITRAGE DE LA GALLERI****************
+// *************RECUPERATION DES ELEMENTS DE FITRAGE DE LA GALLERIE****************
 const sectionGallery = document.querySelector(".gallery");
 const allpicturs = document.querySelector(".toute-la-gallery");
 const theObjects = document.querySelector(".objet-gallery");
@@ -9,7 +9,7 @@ const theHotelsRestautrants = document.querySelector(
   ".restaurants-hotels-gallery"
 );
 
-// *************apparution et la disparution des (modier,logout,login)*******************//
+// *************apparution et la disparution des (modifier,logout,login)*******************//
 
 const btnModify = document.querySelectorAll(".btn-display");
 const btnLogin = document.querySelector(".link-login");
@@ -30,6 +30,7 @@ btnLogOut.addEventListener("click", (e) => {
     btnLogin.style.display = "inline-block";
   });
 });
+
 function getWorks() {
   fetch("http://localhost:5678/api/works/")
     .then((res) => {
@@ -99,6 +100,7 @@ function getWorks() {
           <img src = " ${dataFilters[j].imageUrl}" >
           <figcaption>${dataFilters[j].title}</figcaption>
         </figure>
+        
       
           
           `;
@@ -271,7 +273,19 @@ const verifyInput = function () {
 };
 titrePhoto.addEventListener("input", verifyInput);
 categoriePhoto.addEventListener("change", verifyInput);
-imgRecuperee.addEventListener("change", verifyInput);
+imgRecuperee.addEventListener("change", () => {
+  verifyInput();
+  console.log(imgRecuperee.files);
+  let fileUrl = URL.createObjectURL(imgRecuperee.files[0]);
+  console.log(fileUrl);
+  let imgUpload = document.createElement("img");
+  imgUpload.src = fileUrl;
+  let contenair = document.querySelector(".image-icon");
+  contenair.appendChild(imgUpload);
+  console.log(imgUpload);
+  let faImage = document.querySelector(".fa-image");
+  faImage.style.display = "none";
+});
 
 btnValiderphoto.addEventListener("click", () => {
   if (
@@ -280,7 +294,8 @@ btnValiderphoto.addEventListener("click", () => {
     imgRecuperee.value == ""
   ) {
     alert("Veuillez remplir tous les champs ");
-    return;
+  } else {
+    blockModal2.style.display = "none";
   }
   // LA FORMEDATA A ENVOYER AU SERVEUR//
   const formData = new FormData();

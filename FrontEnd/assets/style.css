@@ -455,10 +455,10 @@ footer nav ul {
   text-decoration: none;
   color: black;
 }
-.link-login,
+/* .link-login,
 .link-logout:hover {
   color: blue;
-}
+} */
 
 .black-line {
   width: 100%;
@@ -519,4 +519,7 @@ input[type="file"] {
 .label-categorie-titre {
   line-height: 35px;
   font-size: 1.2em;
+}
+.image-icon img {
+  height: 50px;
 }

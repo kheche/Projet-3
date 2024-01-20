@@ -333,15 +333,15 @@ footer nav ul {
 
 .gallery-modal {
   height: 60%;
-  width: 79%;
+  width: 82%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   border-bottom: solid gray 2px;
   padding-bottom: 45px;
+  overflow: auto;
 }
-
 .croix-fermeture-modal {
   position: absolute;
   right: 15px;

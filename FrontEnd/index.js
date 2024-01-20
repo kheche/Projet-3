@@ -37,6 +37,7 @@ function getWorks() {
       return res.json();
     })
     .then((data) => {
+      sectionGallery.innerHTML = "";
       for (let i in data) {
         sectionGallery.innerHTML += `
            <figure>
@@ -47,6 +48,9 @@ function getWorks() {
 
           `;
       }
+
+      // &&&&&&&&&&& Debut de filtrage des traveaux dans la page d'accueil&&&&&&&&&&&//
+
       // *************AFFICHAGE DE TOUTE LA GALLERY VAEC LE BOUTON "TOUS"************
       allpicturs.addEventListener("click", function () {
         sectionGallery.innerHTML = "";
@@ -120,6 +124,7 @@ function getWorksForModal() {
       return res.json();
     })
     .then((data) => {
+      galleryModal.innerHTML = "";
       for (let i in data) {
         creatFigureItem(data[i]);
 
@@ -176,9 +181,9 @@ function deleteWorkById(id) {
       },
     })
       .then((response) => {
-        console.log(response.json());
         let workToRemove = document.querySelector(`figure[data-id="${id}"]`);
         workToRemove.remove();
+        getWorks();
       })
       .catch((error) => {});
   }
@@ -250,6 +255,9 @@ const categoriePhoto = document.querySelector("#categorie-photo");
 console.log(titrePhoto);
 
 btnAjouterPhoto.addEventListener("click", () => {
+  titrePhoto.value = "";
+  categoriePhoto.value = "";
+  imgRecuperee.style.display = "none";
   blockModal2.style.zIndex = 100;
 });
 
@@ -273,6 +281,7 @@ const verifyInput = function () {
 };
 titrePhoto.addEventListener("input", verifyInput);
 categoriePhoto.addEventListener("change", verifyInput);
+
 imgRecuperee.addEventListener("change", () => {
   verifyInput();
   console.log(imgRecuperee.files);
@@ -295,8 +304,8 @@ btnValiderphoto.addEventListener("click", () => {
   ) {
     alert("Veuillez remplir tous les champs ");
   } else {
-    blockModal2.style.display = "none";
   }
+
   // LA FORMEDATA A ENVOYER AU SERVEUR//
   const formData = new FormData();
   formData.append("title", titrePhoto.value);
@@ -304,6 +313,8 @@ btnValiderphoto.addEventListener("click", () => {
   formData.append("image", imgRecuperee.files[0]);
   postData(formData);
   console.log(formData);
+  titrePhoto.value = "";
+  categoriePhoto.value = "";
 });
 
 function postData(formData) {
@@ -318,6 +329,9 @@ function postData(formData) {
   })
     .then((response) => {
       console.log(response.json());
+      blockModal2.style.zIndex = -100;
+      getWorksForModal();
+      getWorks();
     })
     .catch((error) => {});
 }

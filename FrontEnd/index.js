@@ -1,6 +1,6 @@
-const tokenVerif = localStorage.getItem("token");
-console.log(tokenVerif);
-// *************RECUPERATION DES ELEMENTS DE FITRAGE DE LA GALLERIE****************
+// &&&&&&&&&&&& RECUPERATION ET AFFICHAGE DES TRAVAUX DANS LA PAGE D'ACCUEIL &&&&&&&&&&&&&//
+// *************RECUPERATION DES ELEMENTS DE FITRAGE DE LA GALLERIE****************//
+// pointer les elements du dom avec "queryselector"//
 const sectionGallery = document.querySelector(".gallery");
 const allpicturs = document.querySelector(".toute-la-gallery");
 const theObjects = document.querySelector(".objet-gallery");
@@ -8,29 +8,6 @@ const theApartements = document.querySelector(".appartement-gallery");
 const theHotelsRestautrants = document.querySelector(
   ".restaurants-hotels-gallery"
 );
-
-// *************apparution et la disparution des (modifier,logout,login)*******************//
-
-const btnModify = document.querySelectorAll(".btn-display");
-const btnLogin = document.querySelector(".link-login");
-const btnLogOut = document.querySelector(".link-logout");
-console.log(btnModify);
-
-btnModify.forEach((btnDisplay) => {
-  if (tokenVerif == null) {
-    btnDisplay.style.display = "none";
-  } else {
-    btnLogin.style.display = "none";
-  }
-});
-btnLogOut.addEventListener("click", (e) => {
-  e.preventDefault();
-  btnModify.forEach((btnDisplay) => {
-    btnDisplay.style.display = "none";
-    btnLogin.style.display = "inline-block";
-  });
-});
-
 function getWorks() {
   fetch("http://localhost:5678/api/works/")
     .then((res) => {
@@ -62,7 +39,6 @@ function getWorks() {
           return dataFilter.category.name === "Objets";
         });
         sectionGallery.innerHTML = "";
-        console.log(dataFilters);
         for (let j = 0; j < dataFilters.length; j++) {
           sectionGallery.innerHTML += `
           <figure>
@@ -114,6 +90,33 @@ function getWorks() {
 }
 
 getWorks();
+
+/* ######## La verification de la connexion (si la variable tokenVerif a une valeur cela veut dire que la connexion reussi
+ donc on peut acceder aux boutons modifier, edition modifier, login,logOut, )### */
+const tokenVerif = localStorage.getItem("token");
+console.log(tokenVerif);
+
+// *************apparution et la disparution des (modifier,logout,login)*******************//
+
+const btnModify = document.querySelectorAll(".btn-display");
+const btnLogin = document.querySelector(".link-login");
+const btnLogOut = document.querySelector(".link-logout");
+console.log(btnModify);
+
+btnModify.forEach((btnDisplay) => {
+  if (tokenVerif == null) {
+    btnDisplay.style.display = "none";
+  } else {
+    btnLogin.style.display = "none";
+  }
+});
+btnLogOut.addEventListener("click", (e) => {
+  e.preventDefault();
+  btnModify.forEach((btnDisplay) => {
+    btnDisplay.style.display = "none";
+    btnLogin.style.display = "inline-block";
+  });
+});
 
 // *******************LA PARTIE MODALE MODALE*******************//
 const galleryModal = document.querySelector(".gallery-modal");
@@ -255,17 +258,28 @@ const categoriePhoto = document.querySelector("#categorie-photo");
 console.log(titrePhoto);
 
 btnAjouterPhoto.addEventListener("click", () => {
-  titrePhoto.value = "";
-  categoriePhoto.value = "";
-  imgRecuperee.style.display = "none";
+  restFormulair();
   blockModal2.style.zIndex = 100;
 });
 
 flecheDeRecule.addEventListener("click", () => {
   blockModal2.style.zIndex = -100;
+  restFormulair();
 });
 
-// ***************CREATION DE FONCTION DE TEST DU CHAMP DES INPUTS ET SELECT*************
+// ***************CREATION DE FONCTION DE TEST DU CHAMP DES INPUTS ET SELECT*************//
+
+function restFormulair() {
+  titrePhoto.value = "";
+  categoriePhoto.value = "";
+  imgRecuperee.value = "";
+  let imgUpload = document.querySelector("#img-upload");
+  if (imgUpload) {
+    imgUpload.remove();
+  }
+  let faImage = document.querySelector(".fa-image");
+  faImage.style.display = "inline-block";
+}
 const verifyInput = function () {
   console.log(titrePhoto.value, categoriePhoto.value);
   if (
@@ -290,10 +304,12 @@ imgRecuperee.addEventListener("change", (e) => {
   console.log(fileUrl);
   let imgUpload = document.createElement("img");
   imgUpload.src = fileUrl;
+  imgUpload.setAttribute("id", "img-upload");
   let contenair = document.querySelector(".image-icon");
   contenair.appendChild(imgUpload);
   console.log(imgUpload);
   let faImage = document.querySelector(".fa-image");
+  faImage.style.display = "none";
 });
 
 btnValiderphoto.addEventListener("click", () => {
@@ -315,7 +331,6 @@ btnValiderphoto.addEventListener("click", () => {
   console.log(formData);
   titrePhoto.value = "";
   categoriePhoto.value = "";
-  imgUpload.src = "";
 });
 
 function postData(formData) {
@@ -333,6 +348,7 @@ function postData(formData) {
       blockModal2.style.zIndex = -100;
       getWorksForModal();
       getWorks();
+      restFormulair();
     })
     .catch((error) => {});
 }

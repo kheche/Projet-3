@@ -243,7 +243,7 @@ document.querySelectorAll(".js-modal").forEach((a) => {
 const linkModal = document.querySelector(".link-modal");
 linkModal.addEventListener("click", openModal);
 console.log(linkModal);
-// &&&&&&&&&&&&&&&&&&&&&&&&&&TRAITEMENT DES MODAL EN JAVASCRIPT&&&&&&&&&&&&&&&&//
+// &&&&&&&&&&&&&&&&&&&&&&&&&& TRAITEMENT DES MODAL EN JAVASCRIPT&&&&&&&&&&&&&&&&//
 
 const blockModal2 = document.querySelector(".block-modal2");
 const imgRecuperee = document.querySelector("#photo-input");
@@ -281,11 +281,12 @@ const verifyInput = function () {
 };
 titrePhoto.addEventListener("input", verifyInput);
 categoriePhoto.addEventListener("change", verifyInput);
-
-imgRecuperee.addEventListener("change", () => {
+let fileUrl = "";
+imgRecuperee.addEventListener("change", (e) => {
+  e.preventDefault();
   verifyInput();
   console.log(imgRecuperee.files);
-  let fileUrl = URL.createObjectURL(imgRecuperee.files[0]);
+  fileUrl = URL.createObjectURL(imgRecuperee.files[0]);
   console.log(fileUrl);
   let imgUpload = document.createElement("img");
   imgUpload.src = fileUrl;
@@ -293,7 +294,6 @@ imgRecuperee.addEventListener("change", () => {
   contenair.appendChild(imgUpload);
   console.log(imgUpload);
   let faImage = document.querySelector(".fa-image");
-  faImage.style.display = "none";
 });
 
 btnValiderphoto.addEventListener("click", () => {
@@ -315,6 +315,7 @@ btnValiderphoto.addEventListener("click", () => {
   console.log(formData);
   titrePhoto.value = "";
   categoriePhoto.value = "";
+  imgUpload.src = "";
 });
 
 function postData(formData) {
